@@ -30,6 +30,14 @@
       "marker": "b"
     }
   ],
+  "rules": [
+    {
+      "round": "true",
+      "start": true,
+      "once": true,
+      "note": "Second Edition: Naaret is permanently immobilized, and immune to all forced movement and Teleport abilities"
+    }
+  ],
   "rooms": [
     {
       "roomNumber": 1,

@@ -2,8 +2,19 @@
   "index": "107",
   "name": "Mechanical Genius",
   "edition": "fc",
-  "unlocks": [
-    "112"
+  "rules": [
+    {
+      "round": "true",
+      "start": true,
+      "once": true,
+      "note": "Second Edition: If a wall tile is moved into a space containing a figure, that figure suffers trap damage and is moved to the closest empty hex"
+    },
+    {
+      "round": "true",
+      "start": true,
+      "once": true,
+      "note": "Second Edition: The second sentence of the third paragraph of the special rules, changed “the Aesther Diviner may not” to “no figure can”."
+    }
   ],
   "rooms": [
     {

@@ -13,6 +13,12 @@
       "round": "true",
       "start": true,
       "note": "%data.scenario.rules.fc.98.1%"
+    },
+    {
+      "round": "true",
+      "start": true,
+      "once": true,
+      "note": "Second Edition: First sentence of third paragraph of special rules, changed “a ranged attack” to “an Attack action”"
     }
   ],
   "rooms": [

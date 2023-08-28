@@ -8,6 +8,14 @@
     "living-bones",
     "living-corpse"
   ],
+  "rules": [
+    {
+      "round": "true",
+      "start": true,
+      "once": true,
+      "note": "Second Edition: Removed the requirement to loot the treasure tile with a loot action."
+    }
+  ],
   "rooms": [
     {
       "roomNumber": 2,

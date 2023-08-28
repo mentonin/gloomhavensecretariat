@@ -17,6 +17,14 @@
       "marker": "a"
     }
   ],
+  "rules": [
+    {
+      "round": "true",
+      "once": true,
+      "start": true,
+      "note": "Second Edition: Whenever a Cultist would summon a Living Bones, it summons one Black Imp instead. Normal Cultists summon normal Black Imps, and elite Cultists summon elite Black Imps."
+    }
+  ],
   "rooms": [
     {
       "roomNumber": 1,

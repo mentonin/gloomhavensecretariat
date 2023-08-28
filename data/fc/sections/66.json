@@ -10,6 +10,11 @@
     {
       "round": "true",
       "once": true,
+      "note": "Second Edition: Remove all negative conditions from The Husk"
+    },
+    {
+      "round": "true",
+      "once": true,
       "note": "%data.section.rules.fc.66.1%",
       "sections": [
         "67"

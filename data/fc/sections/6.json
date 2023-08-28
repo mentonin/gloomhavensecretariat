@@ -9,6 +9,14 @@
     "valrath-tracker",
     "wolf-viper-abomination"
   ],
+  "rules": [
+    {
+      "round": "true",
+      "start": true,
+      "once": true,
+      "note": "Second Edition: Changed the ability cards used for the Wolf-Vipers"
+    }
+  ],
   "rooms": [
     {
       "roomNumber": 2,

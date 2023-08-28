@@ -5,6 +5,14 @@
   "unlocks": [
     "110"
   ],
+  "rules": [
+    {
+      "round": "true",
+      "once": true,
+      "start": true,
+      "note": "Second Edition: Intimidation/Persuasion values were changed, based on Scenario Level"
+    }
+  ],
   "rooms": [
     {
       "roomNumber": 1,

@@ -18,6 +18,9 @@
     "hints": {
       "globalAchievements": [
         "(read section 33 on page 12)"
+      ],
+      "events": [
+        "(Second Edition)"
       ]
     }
   },
@@ -28,6 +31,12 @@
     "wind-demon"
   ],
   "rules": [
+    {
+      "round": "true",
+      "once": true,
+      "start": true,
+      "note": "Second Edition: The Diviner can Teleport to any revealed hex containing a Dark Corridor on the map regardless of distance, but otherwise no figure can Teleport between rooms."
+    },
     {
       "round": "R > 3 && R % 3 == 1",
       "spawns": [

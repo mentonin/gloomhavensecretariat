@@ -25,6 +25,12 @@
   ],
   "rules": [
     {
+      "start": true,
+      "round": "true",
+      "once": true,
+      "note": "Second Edition: In the section links, “at the end of a round” was replaced with “at the start of a round”."
+    },
+    {
       "round": "R == 1",
       "start": true,
       "figures": [

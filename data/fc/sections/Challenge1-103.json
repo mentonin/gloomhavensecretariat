@@ -15,6 +15,13 @@
     "forest-imp",
     "wind-demon"
   ],
+  "rules": [
+    {
+      "round": "true",
+      "once": true,
+      "note": "Second Edition: Changed two of the thorns tiles to water tiles since there weren't enough thorns tiles."
+    }
+  ],
   "rooms": [
     {
       "roomNumber": 3,
