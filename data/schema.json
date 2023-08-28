@@ -1,6 +1,14 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "oneOf": [
+        {
+            "$ref": "#/definitions/ScenarioData"
+        }
+    ],
     "definitions": {
+        "campaignSticker": {
+            "type": "string"
+        },
         "Ability": {
             "properties": {
                 "actions": {
@@ -54,6 +62,7 @@
                     "type": "boolean"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "Action": {
@@ -77,14 +86,15 @@
                     ]
                 },
                 "valueObject": {
-                    "additionalProperties": true,
                     "properties": {},
+                    "additionalProperties": false,
                     "type": "object"
                 },
                 "valueType": {
                     "$ref": "#/definitions/ActionValueType"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "ActionType": {
@@ -136,6 +146,9 @@
         },
         "AdditionalIdentifier": {
             "properties": {
+                "health": {
+                    "type": "string"
+                },
                 "edition": {
                     "default": "",
                     "type": "string"
@@ -163,6 +176,7 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "AttackModifier": {
@@ -205,6 +219,7 @@
                     "$ref": "#/definitions/AttackModifierValueType"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "AttackModifierDeck": {
@@ -236,6 +251,7 @@
                     "type": "array"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "AttackModifierEffect": {
@@ -260,6 +276,7 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "AttackModifierEffectType": {
@@ -354,6 +371,7 @@
                     "type": "array"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "BuildingModel": {
@@ -376,6 +394,7 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "CampaignData": {
@@ -390,7 +409,7 @@
                 "campaignStickers": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/campaignSticker"
                     },
                     "type": "array"
                 },
@@ -430,12 +449,12 @@
                                 "type": "array"
                             }
                         },
+                        "additionalProperties": false,
                         "type": "object"
                     },
                     "type": "array"
                 },
                 "weeks": {
-                    "additionalProperties": false,
                     "patternProperties": {
                         "^[0-9]+$": {
                             "items": {
@@ -444,9 +463,11 @@
                             "type": "array"
                         }
                     },
+                    "additionalProperties": false,
                     "type": "object"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "CharacterClass": {
@@ -566,6 +587,7 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "CharacterGender": {
@@ -576,6 +598,14 @@
             ],
             "type": "string"
         },
+        "CharacterProfession": {
+            "enum": [
+                "brute",
+                "shackles",
+                "coral",
+                "kelp"
+            ]
+        },
         "CharacterStat": {
             "properties": {
                 "health": {
@@ -585,6 +615,7 @@
                     "type": "number"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "DeckData": {
@@ -606,7 +637,23 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
+        },
+        "EditionEnum": {
+            "enum": [
+                "gh",
+                "gh-envx",
+                "fc",
+                "jotl",
+                "fh",
+                "fh-crossover",
+                "cs",
+                "toa",
+                "toa-envv",
+                "sox",
+                "sc"
+            ]
         },
         "EditionData": {
             "properties": {
@@ -652,8 +699,6 @@
                     },
                     "type": "array"
                 },
-                "label": {},
-                "labelSpoiler": {},
                 "monsters": {
                     "items": {
                         "$ref": "#/definitions/MonsterData"
@@ -692,6 +737,7 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "Element": {
@@ -715,6 +761,7 @@
                     "$ref": "#/definitions/Element"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "ElementState": {
@@ -722,7 +769,8 @@
                 "inert",
                 "new",
                 "strong",
-                "waning"
+                "waning",
+                "always"
             ],
             "type": "string"
         },
@@ -738,6 +786,7 @@
                     "$ref": "#/definitions/FigureErrorType"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "FigureErrorType": {
@@ -771,7 +820,11 @@
                     "type": "array"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
+        },
+        "GlobalAchievement": {
+            "type": "string"
         },
         "Identifier": {
             "properties": {
@@ -784,6 +837,7 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "ItemData": {
@@ -864,6 +918,7 @@
                     "$ref": "#/definitions/Identifier"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "ItemSlot": {
@@ -876,6 +931,12 @@
                 "twohand"
             ],
             "type": "string"
+        },
+        "ItemID": {
+            "type": [
+                "integer",
+                "string"
+            ]
         },
         "MonsterData": {
             "properties": {
@@ -919,7 +980,7 @@
                     "type": "boolean"
                 },
                 "name": {
-                    "type": "string"
+                    "$ref": "#/definitions/MonsterClass"
                 },
                 "replace": {
                     "default": false,
@@ -953,7 +1014,161 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
+        },
+        "MonsterClass": {
+            "enum": [
+                "ancient-artillery-section-133",
+                "avatar-of-thelija",
+                "avatar-of-ashtar",
+                "bear-drake-abomination",
+                "wolf-viper-abomination",
+                "lurker-wavethrower-scenario-60",
+                "chaos-spark",
+                "lurker-mindsnipper-scenario-60",
+                "snow-imp-scenario-65",
+                "lord-of-chaos",
+                "lurker-clawcrusher-scenario-60",
+                "living-bones-scenario-65",
+                "frozen-corpse-scenario-32",
+                "chaos-lieutenant",
+                "algox-stormcaller",
+                "snowdancer",
+                "city-guard-scenario-1",
+                "hound-scenario-0",
+                "seeker-of-the-abyss",
+                "algox-priest",
+                "harbinger-of-shadow",
+                "render",
+                "orphan",
+                "fracture-of-the-deep",
+                "guard-captain",
+                "frozen-corpse-scenario-65",
+                "tormentor",
+                "the-relic",
+                "giant-piranha-pig-boss",
+                "abael-herder",
+                "fish-king-scenario-76",
+                "fish-king-scenario-77",
+                "ruined-machines",
+                "steel-automaton",
+                "giant-piranha-pig",
+                "elder-ooze",
+                "rockroot",
+                "lurker-clawcrusher",
+                "yoglang",
+                "scabwit",
+                "program-director",
+                "living-doom",
+                "hound-scenario-112",
+                "chaos-demon",
+                "algox-snowspeaker",
+                "algox-scout",
+                "steel-automaton-scenario-128",
+                "algox-guard",
+                "algox-archer",
+                "algox-icespeaker",
+                "polar-bear-scenario-117",
+                "lurker-wavethrower-scenario-128",
+                "ruined-machine",
+                "robotic-boltshooter",
+                "snow-imp",
+                "lurker-soldier",
+                "shrike-fiend",
+                "abael-scout",
+                "vermling-priest",
+                "burrowing-blade",
+                "lurker-wavethrower",
+                "city-guard-scenario-129",
+                "frozen-corpse",
+                "lurker-mindsnipper",
+                "ice-wraith",
+                "lightning-eel",
+                "aesther-ashblade",
+                "aesther-scout",
+                "ancient-artillery",
+                "arcane-golem:+1",
+                "bandit-archer",
+                "bandit-guard",
+                "bandit-commander",
+                "bloated-regent",
+                "dark-rider",
+                "black-imp",
+                "captain-of-the-guard",
+                "cave-bear",
+                "cave-bear-scenario-54",
+                "cultist-scenario-89",
+                "city-archer",
+                "city-guard",
+                "cultist",
+                "cultist-scenario-78",
+                "deep-terror",
+                "earth-demon",
+                "elder-drake",
+                "flame-demon",
+                "flaming-bladespinner",
+                "forest-imp",
+                "frost-demon",
+                "giant-ooze",
+                "giant-viper",
+                "harrower-infester",
+                "hound",
+                "human-commander",
+                "hungry-soul",
+                "infiltrator:+1",
+                "inox-archer",
+                "inox-bodyguard",
+                "inox-guard",
+                "inox-shaman",
+                "jekserah",
+                "living-bones",
+                "living-corpse",
+                "living-corpse:+2",
+                "living-spirit",
+                "lurker",
+                "lurker-king",
+                "manifestation-of-corruption",
+                "merciless-overseer",
+                "naaret",
+                "night-demon",
+                "ooze",
+                "piranha-pig",
+                "prime-demon",
+                "polar-bear",
+                "prime-demon-scenario-36",
+                "prime-lieutenant",
+                "rending-drake",
+                "savvas-icestorm",
+                "savvas-lavaflow",
+                "selah-naberis",
+                "spitting-drake",
+                "sraka-the-wise",
+                "stone-golem",
+                "siege-cannon",
+                "sun-demon",
+                "the-harvester:+1",
+                "the-betrayer",
+                "the-colorless",
+                "the-gloom",
+                "the-husk",
+                "the-husk-section-66",
+                "the-husk-section-128",
+                "the-steel-lion",
+                "the-sightless-eye",
+                "uyart-ikkuma",
+                "valrath-commander",
+                "valrath-savage",
+                "valrath-tracker",
+                "vermling-scout",
+                "vermling-shaman",
+                "warden",
+                "wind-demon",
+                "winged-horror",
+                "elham",
+                "icestorm-guardian-of-the-firmament",
+                "lavaflow-guardian-of-the-firmament"
+            ]
         },
         "MonsterSpawnData": {
             "properties": {
@@ -980,6 +1195,7 @@
                     "type": "boolean"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "MonsterStandeeData": {
@@ -995,8 +1211,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "default": "",
-                    "type": "string"
+                    "$ref": "#/definitions/MonsterClass"
                 },
                 "player2": {
                     "$ref": "#/definitions/MonsterType"
@@ -1018,6 +1233,7 @@
                     "$ref": "#/definitions/MonsterType"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "MonsterStat": {
@@ -1071,6 +1287,7 @@
                     "$ref": "#/definitions/MonsterType"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "MonsterType": {
@@ -1113,7 +1330,7 @@
                     "type": "number"
                 },
                 "initiative": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "marker": {
                     "type": "string"
@@ -1129,6 +1346,7 @@
                     "type": "array"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "Partial<Record<LootType,number>>": {
@@ -1173,6 +1391,7 @@
                     "type": "number"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "Partial<Record<LootType,number>>_1": {
@@ -1217,7 +1436,11 @@
                     "type": "number"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
+        },
+        "PartyAchievement": {
+            "type": "string"
         },
         "Perk": {
             "properties": {
@@ -1244,6 +1467,7 @@
                     "$ref": "#/definitions/PerkType"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "PerkCard": {
@@ -1256,6 +1480,7 @@
                     "type": "number"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "PerkType": {
@@ -1279,6 +1504,7 @@
                     "type": "number"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "Record<\"hide\"|\"prosperity\"|\"lumber\"|\"metal\",number>": {
@@ -1296,6 +1522,7 @@
                     "type": "number"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "Record<\"hide\"|\"prosperity\"|\"lumber\"|\"metal\"|\"gold\",number>": {
@@ -1316,6 +1543,7 @@
                     "type": "number"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "RoomData": {
@@ -1332,7 +1560,6 @@
                     "type": "boolean"
                 },
                 "marker": {
-                    "default": "",
                     "type": "string"
                 },
                 "monster": {
@@ -1347,7 +1574,7 @@
                     "items": {
                         "type": [
                             "string",
-                            "number"
+                            "integer"
                         ]
                     },
                     "type": "array"
@@ -1363,7 +1590,7 @@
                 "rooms": {
                     "default": [],
                     "items": {
-                        "type": "number"
+                        "type": "integer"
                     },
                     "type": "array"
                 },
@@ -1385,6 +1612,7 @@
                     "type": "array"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "ScenarioData": {
@@ -1392,7 +1620,7 @@
                 "allies": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/MonsterClass"
                     },
                     "type": "array"
                 },
@@ -1403,16 +1631,19 @@
                 "blockedSections": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/SectionNumber"
                     },
                     "type": "array"
                 },
                 "blocks": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/ScenarioNumber"
                     },
                     "type": "array"
+                },
+                "coordinates": {
+                    "$ref": "#/definitions/StickerPosition"
                 },
                 "conclusion": {
                     "default": false,
@@ -1421,31 +1652,27 @@
                 "drawExtra": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/MonsterClass"
                     },
                     "type": "array"
                 },
                 "edition": {
-                    "default": "",
-                    "type": "string"
+                    "$ref": "#/definitions/EditionEnum"
                 },
                 "forcedLinks": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/ScenarioNumber"
                     },
                     "type": "array"
                 },
-                "gridLocation": {
-                    "default": "",
-                    "type": "string"
-                },
                 "group": {
-                    "type": "string"
+                    "$ref": "#/definitions/ScenarioGroup"
                 },
                 "index": {
+                    "description": "Scenario number",
                     "default": "",
-                    "type": "string"
+                    "$ref": "#/definitions/ScenarioNumber"
                 },
                 "initial": {
                     "default": false,
@@ -1454,7 +1681,7 @@
                 "links": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/ScenarioNumber"
                     },
                     "type": "array"
                 },
@@ -1462,13 +1689,14 @@
                     "$ref": "#/definitions/Partial<Record<LootType,number>>"
                 },
                 "marker": {
+                    "$comment": "WHAT",
                     "default": "",
                     "type": "string"
                 },
                 "monsters": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/MonsterClass"
                     },
                     "type": "array"
                 },
@@ -1484,12 +1712,15 @@
                     "type": "array"
                 },
                 "parent": {
-                    "type": "string"
+                    "$ref": "#/definitions/ScenarioNumber"
                 },
                 "parentSections": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/SectionNumber"
+                        }
                     },
                     "type": "array"
                 },
@@ -1497,11 +1728,31 @@
                     "default": false,
                     "type": "boolean"
                 },
+                "requirements": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "party": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/PartyAchievement"
+                                }
+                            },
+                            "global": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/GlobalAchievement"
+                                }
+                            }
+                        }
+                    }
+                },
                 "requires": {
                     "default": [],
                     "items": {
                         "items": {
-                            "type": "string"
+                            "$ref": "#/definitions/ScenarioNumber"
                         },
                         "type": "array"
                     },
@@ -1532,7 +1783,7 @@
                     "type": "array"
                 },
                 "solo": {
-                    "type": "string"
+                    "$ref": "#/definitions/CharacterProfession"
                 },
                 "spoiler": {
                     "default": false,
@@ -1541,15 +1792,16 @@
                 "unlocks": {
                     "default": [],
                     "items": {
-                        "type": "string"
+                        "$ref": "#/definitions/ScenarioNumber"
                     },
                     "type": "array"
                 },
                 "complexity": {
                     "default": 0,
-                    "type": "number"
+                    "type": "integer"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "ScenarioFigureRule": {
@@ -1577,16 +1829,44 @@
                         "remove",
                         "toggleOff",
                         "toggleOn",
-                        "transfer"
+                        "transfer",
+                        "permanentCondition"
                     ],
                     "type": "string"
                 },
                 "value": {
-                    "default": "",
-                    "type": "string"
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "string",
+                            "$comment": "validate better"
+                        }
+                    ]
                 }
             },
+            "additionalProperties": false,
             "type": "object"
+        },
+        "ScenarioGroup": {
+            "enum": [
+                "solo",
+                "challenge"
+            ]
+        },
+        "ScenarioNumber": {
+            "type": "string"
+        },
+        "chooseItem": {
+            "default": [],
+            "items": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/ItemID"
+                }
+            },
+            "type": "array"
         },
         "ScenarioRewardHints": {
             "properties": {
@@ -1595,11 +1875,7 @@
                     "type": "string"
                 },
                 "chooseItem": {
-                    "default": [],
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                    "$ref": "#/definitions/chooseItem"
                 },
                 "collectiveGold": {
                     "default": "",
@@ -1675,24 +1951,98 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
+        },
+        "ResourceType": {
+            "enum": [
+                "hide",
+                "lumber",
+                "metal",
+                "flamefruit",
+                "snowthistle",
+                "arrowvine",
+                "rockroot",
+                "axenut",
+                "corpsecap"
+            ]
+        },
+        "CalendarEventSpec": {
+            "type": "string",
+            "$comment": "validate better"
         },
         "ScenarioRewards": {
             "properties": {
+                "randomItemBlueprint": {
+                    "type": "integer"
+                },
+                "campaignSticker": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/campaignSticker"
+                    }
+                },
                 "battleGoals": {
                     "default": 0,
                     "type": "number"
                 },
-                "chooseItem": {
-                    "default": [],
+                "chooseUnlockCharacter": {
+                    "type": "array",
                     "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                        "$ref": "#/definitions/CharacterProfession"
+                    }
+                },
+                "unlockCharacter": {
+                    "$ref": "#/definitions/CharacterProfession"
+                },
+                "calendarSection": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CalendarEventSpec"
+                    }
+                },
+                "calendarSectionManual": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "section": {
+                                "$ref": "#/definitions/CalendarEventSpec"
+                            },
+                            "hint": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "chooseItem": {
+                    "$ref": "#/definitions/chooseItem"
+                },
+                "chooseLocation": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScenarioNumber"
+                    }
                 },
                 "collectiveGold": {
                     "default": 0,
                     "type": "number"
+                },
+                "collectiveResources": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "type": {
+                                "$ref": "#/definitions/ResourceType"
+                            },
+                            "value": {
+                                "type": "integer"
+                            }
+                        }
+                    }
                 },
                 "custom": {
                     "default": "",
@@ -1744,6 +2094,13 @@
                     },
                     "type": "array"
                 },
+                "itemBlueprints": {
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "items": {
                     "default": [],
                     "items": {
@@ -1757,6 +2114,14 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "morale": {
+                    "default": 0,
+                    "type": "integer"
+                },
+                "inspiration": {
+                    "default": 0,
+                    "type": "integer"
                 },
                 "partyAchievements": {
                     "default": [],
@@ -1778,10 +2143,56 @@
                     "type": "number"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "ScenarioRule": {
             "properties": {
+                "objectiveSpawns": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "objective": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "index": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "escort": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            },
+                            "marker": {
+                                "type": "string"
+                            },
+                            "count": {
+                                "type": "string"
+                            },
+                            "manual": {
+                                "type": "boolean"
+                            },
+                            "manualMin": {
+                                "type": "integer"
+                            },
+                            "manualMax": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
                 "always": {
                     "default": false,
                     "type": "boolean"
@@ -1839,7 +2250,7 @@
                 "rooms": {
                     "default": [],
                     "items": {
-                        "type": "number"
+                        "type": "integer"
                     },
                     "type": "array"
                 },
@@ -1865,6 +2276,7 @@
                     "type": "boolean"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "ScenarioRuleIdentifier": {
@@ -1889,7 +2301,29 @@
                     "type": "boolean"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
+        },
+        "SectionNumber": {
+            "type": "string"
+        },
+        "StickerPosition": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                },
+                "width": {
+                    "type": "number"
+                },
+                "height": {
+                    "type": "number"
+                }
+            }
         },
         "SummonData": {
             "properties": {
@@ -1948,6 +2382,7 @@
                     "type": "boolean"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         },
         "TownGuardPerk": {
@@ -1962,8 +2397,8 @@
                     "type": "array"
                 }
             },
+            "additionalProperties": false,
             "type": "object"
         }
     }
 }
-
